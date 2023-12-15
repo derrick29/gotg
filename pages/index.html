@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOTG</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .board {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .row:nth-child(1) .piece, .row:nth-child(2) .piece, .row:nth-child(3) .piece {
+            /* border: 1px solid red; */
+            background-color: rgb(228, 149, 149);
+        }
+
+        /* .row:nth-child(4) .piece, .row:nth-child(5) .piece {
+            border: 2px solid red;
+        } */
+
+        .row:nth-child(6) .piece, .row:nth-child(7) .piece, .row:nth-child(8) .piece {
+            /* border: 1px solid blue; */
+            background-color: rgb(142, 142, 226);
+        }
+
+        .piece {
+            width: 65px;
+            height: 55px;
+            border: 1px solid black;
+        }
+
+        .glow {
+            background-color: rgb(223, 223, 184) !important;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .actions button {
+            padding: 5px;
+            width: 75px;
+            height: 50px;
+        }
+
+        .actions button:hover {
+            cursor: pointer;
+        }
+
+        .piece {
+            outline: none;
+            padding: 2px;
+        }
+
+        .piece:hover {
+            cursor: pointer;
+        }
+
+        .piece-img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="wc">Welcome General</h1>
+
+    <div class="actions">
+        <button id="btnCreate">Create Room</button>
+        <button id="btnJoin">Challenge</button>
+        <button id="logout">logout</button>
+    </div>
+    
+    <h1 id="txtRoom"></h1>
+    <h1 id="ct"></h1>
+
+    <div class="container">
+        <div class="board" id="board">
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>

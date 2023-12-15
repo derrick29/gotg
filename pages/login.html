@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #username {
+            margin-right: 5px;
+            padding: 5px 10px;
+            font-size: 32px;
+        }
+
+        #btn {
+            padding: 5px;
+            width: 75px;
+            height: 50px;
+        }
+
+        #btn:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login to Play</h1>
+    <div class="form">
+        <input type="text" name="" id="username">
+        <button id="btn">Join</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+
+        const username = localStorage.getItem('username');
+        if(username) {
+            window.location.href = '/'
+        }
+
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', () => {
+            
+            const username = document.getElementById('username');
+            if(username) {
+                socket.emit('checkUser', username.value)
+            }
+            
+        });
+
+        socket.on('userChecked', data => {
+            if(data['exists']) {
+                alert('Username already in use')
+                document.getElementById('username').value = '';
+            } else {
+                localStorage.setItem('username', data['username']);
+                window.location.href = '/';
+            }
+        })
+    </script>
+</body>
+</html>

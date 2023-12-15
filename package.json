@@ -1,0 +1,17 @@
+{
+  "name": "gotg-local",
+  "version": "1.0.0",
+  "description": "Game Of The Generals nyenyenye",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [],
+  "author": "Derrick",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  }
+}
